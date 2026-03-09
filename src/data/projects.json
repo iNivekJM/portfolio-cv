@@ -1,0 +1,50 @@
+[
+    {
+        "title": "API de Facturación Electrónica",
+        "description": "API de alto rendimiento que procesa más de 15,000 peticiones de archivos de facturas electrónicas. Maneja recepción, almacenamiento y procesamiento masivo de archivos con validaciones complejas y trazabilidad completa.",
+        "techs": [
+            "Python",
+            "MongoDB",
+            "PL/SQL Oracle",
+            "Nginx",
+            "REST API"
+        ],
+        "repoUrl": "",
+        "liveUrl": "",
+        "image": "/projects/api-facturacion.png",
+        "featured": true,
+        "order": 1
+    },
+    {
+        "title": "Portal de Gestión Interna",
+        "description": "Plataforma web corporativa con más de 70 módulos que optimizan los procesos internos de una empresa con más de 700 empleados. Incluye módulos de RRHH, reportes ejecutivos, gestión de turnos y más.",
+        "techs": [
+            "Angular",
+            "PHP",
+            "Oracle SQL",
+            "Bootstrap",
+            "REST API"
+        ],
+        "repoUrl": "",
+        "liveUrl": "",
+        "image": "/projects/portal-gestion.png",
+        "featured": true,
+        "order": 2
+    },
+    {
+        "title": "Sistema de Reportes Ejecutivos",
+        "description": "Dashboard ejecutivo con visualización de KPIs, métricas de negocio y reportes automatizados para la toma de decisiones gerenciales. Integración con Oracle y generación de reportes en PDF y Excel.",
+        "techs": [
+            "AngularJS",
+            "PL/SQL",
+            "Oracle SQL",
+            "Python",
+            "Chart.js"
+        ],
+        "repoUrl": "",
+        "liveUrl": "",
+        "image": "/projects/reportes.png",
+        "featured": false,
+        "order": 3
+    }
+]

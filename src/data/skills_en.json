@@ -1,0 +1,100 @@
+{
+    "categories": [
+        {
+            "name": "Frontend",
+            "icon": "🖥️",
+            "skills": [
+                {
+                    "name": "Angular / AngularJS",
+                    "level": 95
+                },
+                {
+                    "name": "Astro",
+                    "level": 80
+                },
+                {
+                    "name": "JavaScript (ES6+)",
+                    "level": 90
+                },
+                {
+                    "name": "HTML5 & CSS3",
+                    "level": 95
+                },
+                {
+                    "name": "TailwindCSS",
+                    "level": 85
+                },
+                {
+                    "name": "Bootstrap",
+                    "level": 85
+                }
+            ]
+        },
+        {
+            "name": "Backend",
+            "icon": "⚙️",
+            "skills": [
+                {
+                    "name": "PHP",
+                    "level": 90
+                },
+                {
+                    "name": "Python",
+                    "level": 85
+                },
+                {
+                    "name": "REST API",
+                    "level": 90
+                },
+                {
+                    "name": "PL/SQL Oracle",
+                    "level": 88
+                },
+                {
+                    "name": "Node.js",
+                    "level": 70
+                }
+            ]
+        },
+        {
+            "name": "Databases",
+            "icon": "🗄️",
+            "skills": [
+                {
+                    "name": "Oracle SQL",
+                    "level": 90
+                },
+                {
+                    "name": "MySQL",
+                    "level": 85
+                },
+                {
+                    "name": "MongoDB",
+                    "level": 75
+                }
+            ]
+        },
+        {
+            "name": "Tools & DevOps",
+            "icon": "🛠️",
+            "skills": [
+                {
+                    "name": "Git & GitHub",
+                    "level": 90
+                },
+                {
+                    "name": "Nginx",
+                    "level": 75
+                },
+                {
+                    "name": "Agile Methodologies",
+                    "level": 85
+                },
+                {
+                    "name": "Linux",
+                    "level": 70
+                }
+            ]
+        }
+    ]
+}

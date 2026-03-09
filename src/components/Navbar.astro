@@ -1,22 +1,27 @@
 ---
-import profile from '../data/profile.json';
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+import logoIcon from '../assets/logo.svg?raw';
 
 const navLinks = [
-  { href: '#about',      label: 'Sobre mí' },
-  { href: '#skills',     label: 'Habilidades' },
-  { href: '#experience', label: 'Experiencia' },
-  { href: '#education',  label: 'Educación' },
-  { href: '#projects',   label: 'Proyectos' },
-  { href: '#contact',    label: 'Contacto' },
+  { href: '#about',      label: t('nav.about') },
+  { href: '#skills',     label: t('nav.skills') },
+  { href: '#experience', label: t('nav.experience') },
+  { href: '#education',  label: t('nav.education') },
+  { href: '#projects',   label: t('nav.projects') },
+  { href: '#contact',    label: t('nav.contact') },
 ];
 ---
 
 <header id="navbar" class="navbar">
   <div class="container nav-inner">
     <a href="#" class="nav-logo" aria-label="Kevin Ariza - Inicio">
-      <span class="logo-bracket">&lt;</span>
-      <span class="logo-name">KA</span>
-      <span class="logo-bracket">/&gt;</span>
+      <div class="logo-wrapper">
+        <Fragment set:html={logoIcon} />
+      </div>
     </a>
 
     <nav aria-label="Navegación principal">
@@ -39,6 +44,14 @@ const navLinks = [
         <span class="theme-icon sun" aria-hidden="true">☀️</span>
         <span class="theme-icon moon" aria-hidden="true">🌙</span>
       </button>
+
+      <div class="lang-selector">
+        {lang === 'es' ? (
+          <a href="/en" class="lang-btn" title="Switch to English">EN</a>
+        ) : (
+          <a href="/" class="lang-btn" title="Cambiar a Español">ES</a>
+        )}
+      </div>
 
       <button
         id="menu-toggle"
@@ -88,15 +101,36 @@ const navLinks = [
   }
 
   .nav-logo {
-    font-weight: 800;
-    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    color: var(--color-text);
-    white-space: nowrap;
+    transition: transform 0.2s ease;
   }
 
-  .logo-bracket { color: var(--color-accent); }
-  .logo-name { color: var(--color-text); margin-inline: 2px; }
+  .nav-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-wrapper :global(svg) {
+    height: 40px;
+    width: auto;
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+  }
+
+  :global([data-theme="dark"]) .logo-wrapper :global(svg) {
+    color: #fff;
+  }
+
+  .logo-wrapper :global(svg *) {
+    fill: currentColor !important;
+  }
 
   .nav-links {
     display: flex;
@@ -138,8 +172,28 @@ const navLinks = [
   /* :global() is required because data-theme is on <html>, outside this component's scope */
   :global([data-theme="dark"])  .theme-icon.sun  { display: block; }
   :global([data-theme="dark"])  .theme-icon.moon { display: none;  }
-  :global([data-theme="light"]) .theme-icon.sun  { display: none;  }
   :global([data-theme="light"]) .theme-icon.moon { display: block; }
+  :global([data-theme="light"]) .theme-icon.sun  { display: none;  }
+
+  .lang-btn {
+    display: flex;
+    align-items: center; justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 0.5rem;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: all 0.2s ease;
+  }
+
+  .lang-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+    transform: translateY(-2px);
+  }
 
   .menu-btn {
     display: none;

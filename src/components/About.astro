@@ -1,5 +1,37 @@
 ---
-import profile from '../data/profile.json';
+import profileEs from '../data/profile.json';
+import profileEn from '../data/profile_en.json';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const profile = lang === 'en' ? profileEn : profileEs;
+
+const content = {
+  es: {
+    label: 'Sobre mí',
+    titlePrefix: 'Construyo software que',
+    titleGradient: 'resuelve problemas reales',
+    btnWork: '¡Trabajemos juntos!',
+    values: [
+      { icon: '🚀', title: 'Full Stack', desc: 'Domino tanto el frontend como el backend, lo que me permite entregar soluciones completas de forma autónoma.' },
+      { icon: '📈', title: 'Orientado a resultados', desc: 'Cada solución que entrego está medida por su impacto: productividad, rendimiento y experiencia de usuario.' },
+      { icon: '🤝', title: 'Liderazgo técnico', desc: 'Experiencia liderando equipos de desarrollo, asignando recursos y promoviendo mejores prácticas de código.' },
+      { icon: '🔒', title: 'Sistemas críticos', desc: 'He construido sistemas que procesan miles de peticiones diarias con alta disponibilidad y confiabilidad.' },
+    ]
+  },
+  en: {
+    label: 'About me',
+    titlePrefix: 'I build software that',
+    titleGradient: 'solves real problems',
+    btnWork: "Let's work together!",
+    values: [
+      { icon: '🚀', title: 'Full Stack', desc: 'I master both frontend and backend, allowing me to deliver complete solutions autonomously.' },
+      { icon: '📈', title: 'Result-oriented', desc: 'Every solution I deliver is measured by its impact: productivity, performance, and user experience.' },
+      { icon: '🤝', title: 'Technical Leadership', desc: 'Experience leading development teams, assigning resources, and promoting best code practices.' },
+      { icon: '🔒', title: 'Critical Systems', desc: 'I have built systems that process thousands of daily requests with high availability and reliability.' },
+    ]
+  }
+}[lang];
 ---
 
 <section id="about" class="section">
@@ -7,9 +39,9 @@ import profile from '../data/profile.json';
     <div class="about-grid">
       <!-- Text -->
       <div class="about-text">
-        <span class="about-label">Sobre mí</span>
+        <span class="about-label">{content.label}</span>
         <h2 class="section-title" style="text-align:left">
-          Construyo software que <span class="gradient-text">resuelve problemas reales</span>
+          {content.titlePrefix} <span class="gradient-text">{content.titleGradient}</span>
         </h2>
 
         <p class="about-bio">{profile.bio}</p>
@@ -29,24 +61,21 @@ import profile from '../data/profile.json';
             <a href={`tel:${profile.phone}`}>{profile.phone}</a>
           </div>
           <div class="detail-item">
-            <span class="detail-icon" aria-hidden="true">💼</span>
+            <span class="detail-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+            </span>
             <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
           </div>
         </div>
 
         <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem">
-          ¡Trabajemos juntos!
+          {content.btnWork}
         </a>
       </div>
 
       <!-- Values cards -->
       <div class="about-values">
-        {[
-          { icon: '🚀', title: 'Full Stack', desc: 'Domino tanto el frontend como el backend, lo que me permite entregar soluciones completas de forma autónoma.' },
-          { icon: '📈', title: 'Orientado a resultados', desc: 'Cada solución que entrego está medida por su impacto: productividad, rendimiento y experiencia de usuario.' },
-          { icon: '🤝', title: 'Liderazgo técnico', desc: 'Experiencia liderando equipos de desarrollo, asignando recursos y promoviendo mejores prácticas de código.' },
-          { icon: '🔒', title: 'Sistemas críticos', desc: 'He construido sistemas que procesan miles de peticiones diarias con alta disponibilidad y confiabilidad.' },
-        ].map(v => (
+        {content.values.map(v => (
           <div class="value-card card">
             <span class="value-icon" aria-hidden="true">{v.icon}</span>
             <h3 class="value-title">{v.title}</h3>

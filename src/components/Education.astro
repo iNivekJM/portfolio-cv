@@ -1,12 +1,36 @@
 ---
-import education from '../data/education.json';
+import educationEs from '../data/education.json';
+import educationEn from '../data/education_en.json';
+import { getLangFromUrl } from '../i18n/utils';
 
-const types = ['education', 'certification', 'course'] as const;
-const labels: Record<string, string> = {
-  education: 'Educación',
-  certification: 'Certificación',
-  course: 'Curso',
-};
+const lang = getLangFromUrl(Astro.url);
+const education = lang === 'en' ? educationEn : educationEs;
+
+const content = {
+  es: {
+    label: 'Formación',
+    title: 'Educación &',
+    titleHighlight: 'Certificaciones',
+    subtitle: 'Mi formación académica, certificaciones y aprendizaje continuo',
+    types: {
+      education: 'Educación',
+      certification: 'Certificación',
+      course: 'Curso',
+    }
+  },
+  en: {
+    label: 'Education',
+    title: 'Education &',
+    titleHighlight: 'Certifications',
+    subtitle: 'My academic background, certifications and continuous learning',
+    types: {
+      education: 'Education',
+      certification: 'Certification',
+      course: 'Course',
+    }
+  }
+}[lang];
+
 const typeColors: Record<string, string> = {
   education: '#6c63ff',
   certification: '#f59e0b',
@@ -17,9 +41,9 @@ const typeColors: Record<string, string> = {
 <section id="education" class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Formación</span>
-      <h2 class="section-title">Educación & <span class="gradient-text">Certificaciones</span></h2>
-      <p class="section-subtitle">Mi formación académica, certificaciones y aprendizaje continuo</p>
+      <span class="section-label">{content.label}</span>
+      <h2 class="section-title">{content.title} <span class="gradient-text">{content.titleHighlight}</span></h2>
+      <p class="section-subtitle">{content.subtitle}</p>
     </div>
 
     <div class="edu-grid">
@@ -28,7 +52,7 @@ const typeColors: Record<string, string> = {
           <div class="edu-header">
             <span class="edu-icon" aria-hidden="true">{item.icon}</span>
             <span class="edu-badge" style={`background: ${typeColors[item.type]}22; color: ${typeColors[item.type]}; border-color: ${typeColors[item.type]}44`}>
-              {labels[item.type]}
+              {content.types[item.type as keyof typeof content.types]}
             </span>
           </div>
 

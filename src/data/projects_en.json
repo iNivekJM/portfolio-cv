@@ -1,0 +1,50 @@
+[
+    {
+        "title": "Electronic Invoicing API",
+        "description": "High-performance API that processes more than 15,000 invoice document requests. Handles bulk file reception, storage, and processing with complex validations and full traceability.",
+        "techs": [
+            "Python",
+            "MongoDB",
+            "PL/SQL Oracle",
+            "Nginx",
+            "REST API"
+        ],
+        "repoUrl": "",
+        "liveUrl": "",
+        "image": "/projects/api-facturacion.png",
+        "featured": true,
+        "order": 1
+    },
+    {
+        "title": "Internal Management Portal",
+        "description": "Corporate web platform with +70 modules that optimize internal processes for a company with +700 employees. Includes HR modules, executive reports, shift management, and more.",
+        "techs": [
+            "Angular",
+            "PHP",
+            "Oracle SQL",
+            "Bootstrap",
+            "REST API"
+        ],
+        "repoUrl": "",
+        "liveUrl": "",
+        "image": "/projects/portal-gestion.png",
+        "featured": true,
+        "order": 2
+    },
+    {
+        "title": "Executive Reporting System",
+        "description": "Executive dashboard with KPI visualization, business metrics, and automated reports for management decision-making. Oracle integration and PDF/Excel report generation.",
+        "techs": [
+            "AngularJS",
+            "PL/SQL",
+            "Oracle SQL",
+            "Python",
+            "Chart.js"
+        ],
+        "repoUrl": "",
+        "liveUrl": "",
+        "image": "/projects/reportes.png",
+        "featured": false,
+        "order": 3
+    }
+]

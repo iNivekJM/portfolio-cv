@@ -1,0 +1,47 @@
+[
+    {
+        "type": "education",
+        "institution": "Simón Bolívar University",
+        "title": "Systems Engineering",
+        "subtitle": "Minor in Software Engineering",
+        "location": "Atlántico, Colombia",
+        "date": "Aug 2020",
+        "icon": "🎓"
+    },
+    {
+        "type": "certification",
+        "institution": "CISCO | Python Institute",
+        "title": "Python Essentials 1 & 2",
+        "subtitle": "Official programming essentials certification",
+        "location": "Online",
+        "date": "Oct – Dec 2024",
+        "icon": "🐍"
+    },
+    {
+        "type": "certification",
+        "institution": "CISCO | Networking Academy",
+        "title": "Data Analytics Essentials",
+        "subtitle": "Data analytics fundamentals",
+        "location": "Online",
+        "date": "Dec 2025",
+        "icon": "📊"
+    },
+    {
+        "type": "certification",
+        "institution": "CISCO | Networking Academy",
+        "title": "Introduction to Data Science",
+        "subtitle": "Introduction to data science and machine learning",
+        "location": "Online",
+        "date": "Dec 2025",
+        "icon": "🤖"
+    },
+    {
+        "type": "course",
+        "institution": "DevTalles",
+        "title": "Complete Astro Course",
+        "subtitle": "Modern web development with Astro framework",
+        "location": "Online",
+        "date": "Jan 2026",
+        "icon": "🚀"
+    }
+]

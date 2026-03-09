@@ -1,14 +1,34 @@
 ---
-import skillsData from '../data/skills.json';
+import skillsDataEs from '../data/skills.json';
+import skillsDataEn from '../data/skills_en.json';
+import { getLangFromUrl } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const skillsData = lang === 'en' ? skillsDataEn : skillsDataEs;
 const { categories } = skillsData;
+
+const content = {
+  es: {
+    label: 'Habilidades',
+    title: 'Stack',
+    titleHighlight: 'Tecnológico',
+    subtitle: 'Tecnologías con las que construyo soluciones de alto impacto',
+  },
+  en: {
+    label: 'Skills',
+    title: 'Tech',
+    titleHighlight: 'Stack',
+    subtitle: 'Technologies I use to build high-impact solutions',
+  }
+}[lang];
 ---
 
 <section id="skills" class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Habilidades</span>
-      <h2 class="section-title">Stack <span class="gradient-text">Tecnológico</span></h2>
-      <p class="section-subtitle">Tecnologías con las que construyo soluciones de alto impacto</p>
+      <span class="section-label">{content.label}</span>
+      <h2 class="section-title">{content.title} <span class="gradient-text">{content.titleHighlight}</span></h2>
+      <p class="section-subtitle">{content.subtitle}</p>
     </div>
 
     <div class="skills-grid">

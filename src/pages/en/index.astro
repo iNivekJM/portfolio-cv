@@ -1,21 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Skills from '../components/Skills.astro';
-import Experience from '../components/Experience.astro';
-import Education from '../components/Education.astro';
-import Projects from '../components/Projects.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Skills from '../../components/Skills.astro';
+import Experience from '../../components/Experience.astro';
+import Education from '../../components/Education.astro';
+import Projects from '../../components/Projects.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import { useTranslations } from '../../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const t = useTranslations('en');
 ---
 
-<Layout>
+<Layout
+  title="Kevin Ariza Nuñez | Senior Full Stack Developer · Angular · PHP · Python"
+  description="Portfolio of Kevin Ariza Nuñez, Senior Full Stack Developer with more than 7 years of experience. Specialist in Angular, PHP, Python, Oracle SQL and high-performance APIs. Based in Colombia."
+>
   <Navbar />
   <main id="main-content">
     <Hero />

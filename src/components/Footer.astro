@@ -1,5 +1,17 @@
 ---
-import profile from '../data/profile.json';
+import profileEs from "../data/profile.json";
+import profileEn from "../data/profile_en.json";
+import { getLangFromUrl } from "../i18n/utils";
+
+import logoIcon from "../assets/logo.svg?raw";
+
+const lang = getLangFromUrl(Astro.url);
+const profile = lang === "en" ? profileEn : profileEs;
+
+const content = {
+  es: { builtWith: "Construido con" },
+  en: { builtWith: "Built with" },
+}[lang];
 
 const year = new Date().getFullYear();
 ---
@@ -7,19 +19,27 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="container footer-inner">
     <a href="#" class="footer-logo" aria-label="Kevin Ariza - Inicio">
-      <span class="logo-bracket">&lt;</span>
-      <span>KA</span>
-      <span class="logo-bracket">/&gt;</span>
+      <div class="logo-wrapper">
+        <Fragment set:html={logoIcon} />
+      </div>
     </a>
 
     <p class="footer-copy">
-      © {year} {profile.name}. Construido con
-      <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
+      © {year}
+      {profile.name}. {content.builtWith}
+      <a href="https://astro.build" target="_blank" rel="noopener noreferrer"
+        >Astro</a
+      >
       &amp; <span class="gradient-text">✨</span>
     </p>
 
     <div class="footer-links">
-      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+      <a
+        href={profile.linkedin}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="LinkedIn">LinkedIn</a
+      >
       <a href={`mailto:${profile.email}`} aria-label="Email">Email</a>
       <a href="/curriculum.pdf" download aria-label="Descargar CV">CV</a>
     </div>
@@ -41,17 +61,40 @@ const year = new Date().getFullYear();
   }
 
   .footer-logo {
-    font-weight: 800;
-    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
     text-decoration: none;
-    color: var(--color-text);
+    transition: transform 0.2s ease;
   }
 
-  .logo-bracket { color: var(--color-accent); }
+  .footer-logo:hover {
+    transform: scale(1.05);
+  }
+
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .logo-wrapper :global(svg) {
+    height: 32px;
+    width: auto;
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+  }
+
+  :global([data-theme="dark"]) .logo-wrapper :global(svg) {
+    color: #fff;
+  }
+
+  .logo-wrapper :global(svg *) {
+    fill: currentColor !important;
+  }
 
   .footer-copy {
     font-size: 0.82rem;
-    color: var(--color-text-muted);
+    color: var(--color-text);
     text-align: center;
   }
 
@@ -60,7 +103,9 @@ const year = new Date().getFullYear();
     text-decoration: none;
   }
 
-  .footer-copy a:hover { text-decoration: underline; }
+  .footer-copy a:hover {
+    text-decoration: underline;
+  }
 
   .footer-links {
     display: flex;
@@ -69,14 +114,19 @@ const year = new Date().getFullYear();
 
   .footer-links a {
     font-size: 0.82rem;
-    color: var(--color-text-muted);
+    color: var(--color-text);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
-  .footer-links a:hover { color: var(--color-accent); }
+  .footer-links a:hover {
+    color: var(--color-accent);
+  }
 
   @media (max-width: 600px) {
-    .footer-inner { justify-content: center; text-align: center; }
+    .footer-inner {
+      justify-content: center;
+      text-align: center;
+    }
   }
 </style>
