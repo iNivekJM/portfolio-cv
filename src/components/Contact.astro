@@ -56,7 +56,8 @@ import profile from '../data/profile.json';
       </div>
 
       <!-- Form -->
-      <form id="contact-form" class="contact-form card" novalidate>
+      <form id="contact-form" class="contact-form card" novalidate data-netlify="true" name="contact">
+        <input type="hidden" name="form-name" value="contact" />
         <div class="form-group">
           <label for="cf-name">Nombre completo</label>
           <input type="text" id="cf-name" name="name" placeholder="Juan Pérez" required autocomplete="name" />
@@ -226,13 +227,28 @@ import profile from '../data/profile.json';
     btn.disabled = true;
     btn.textContent = 'Enviando...';
 
-    // Simulate send (replace with a real form service like Netlify Forms, Formspree, etc.)
-    await new Promise(r => setTimeout(r, 1200));
+    const formData = new FormData(form);
+    
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData as any).toString(),
+      });
 
-    status.textContent = '✅ ¡Mensaje enviado! Te responderé pronto.';
-    status.className = 'form-status success';
-    form.reset();
-    btn.disabled = false;
-    btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> Enviar mensaje`;
+      if (response.ok) {
+        status.textContent = '✅ ¡Mensaje enviado! Te responderé pronto.';
+        status.className = 'form-status success';
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      status.textContent = '❌ Hubo un error al enviar. Por favor intenta de nuevo.';
+      status.className = 'form-status error';
+    } finally {
+      btn.disabled = false;
+      btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg> Enviar mensaje`;
+    }
   });
 </script>
