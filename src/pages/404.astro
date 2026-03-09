@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 – Página no encontrada | Kevin Ariza" description="La página que buscas no existe.">
+  <main style="min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;text-align:center;padding:2rem">
+    <span style="font-size:5rem;line-height:1">🚀</span>
+    <h1 style="font-size:clamp(2rem,6vw,3.5rem);font-weight:900;letter-spacing:-0.03em">
+      Error <span class="gradient-text">404</span>
+    </h1>
+    <p style="color:var(--color-text-muted);max-width:400px;line-height:1.7">
+      Parece que esta página salió al espacio. Vuelve al inicio para encontrar lo que buscas.
+    </p>
+    <a href="/" class="btn btn-primary">← Volver al inicio</a>
+  </main>
+</Layout>

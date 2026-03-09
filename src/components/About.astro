@@ -1,0 +1,147 @@
+---
+import profile from '../data/profile.json';
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Text -->
+      <div class="about-text">
+        <span class="about-label">Sobre mí</span>
+        <h2 class="section-title" style="text-align:left">
+          Construyo software que <span class="gradient-text">resuelve problemas reales</span>
+        </h2>
+
+        <p class="about-bio">{profile.bio}</p>
+        <p class="about-bio">{profile.bioExtended}</p>
+
+        <div class="about-details">
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">📍</span>
+            <span>{profile.location}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">📧</span>
+            <a href={`mailto:${profile.email}`}>{profile.email}</a>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">📞</span>
+            <a href={`tel:${profile.phone}`}>{profile.phone}</a>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon" aria-hidden="true">💼</span>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem">
+          ¡Trabajemos juntos!
+        </a>
+      </div>
+
+      <!-- Values cards -->
+      <div class="about-values">
+        {[
+          { icon: '🚀', title: 'Full Stack', desc: 'Domino tanto el frontend como el backend, lo que me permite entregar soluciones completas de forma autónoma.' },
+          { icon: '📈', title: 'Orientado a resultados', desc: 'Cada solución que entrego está medida por su impacto: productividad, rendimiento y experiencia de usuario.' },
+          { icon: '🤝', title: 'Liderazgo técnico', desc: 'Experiencia liderando equipos de desarrollo, asignando recursos y promoviendo mejores prácticas de código.' },
+          { icon: '🔒', title: 'Sistemas críticos', desc: 'He construido sistemas que procesan miles de peticiones diarias con alta disponibilidad y confiabilidad.' },
+        ].map(v => (
+          <div class="value-card card">
+            <span class="value-icon" aria-hidden="true">{v.icon}</span>
+            <h3 class="value-title">{v.title}</h3>
+            <p class="value-desc">{v.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (min-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .about-label {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title { margin-bottom: 1.5rem; }
+
+  .about-bio {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .about-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+
+  .detail-item a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .detail-item a:hover { color: var(--color-accent); }
+
+  .detail-icon { font-size: 1rem; }
+
+  /* Values */
+  .about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .value-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .value-icon { font-size: 1.75rem; }
+
+  .value-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .value-desc {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+    .about-values { grid-template-columns: 1fr; }
+  }
+</style>

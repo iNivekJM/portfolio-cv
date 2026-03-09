@@ -1,0 +1,245 @@
+---
+import profile from '../data/profile.json';
+
+const navLinks = [
+  { href: '#about',      label: 'Sobre mí' },
+  { href: '#skills',     label: 'Habilidades' },
+  { href: '#experience', label: 'Experiencia' },
+  { href: '#education',  label: 'Educación' },
+  { href: '#projects',   label: 'Proyectos' },
+  { href: '#contact',    label: 'Contacto' },
+];
+---
+
+<header id="navbar" class="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo" aria-label="Kevin Ariza - Inicio">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">KA</span>
+      <span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <nav aria-label="Navegación principal">
+      <ul class="nav-links" role="list">
+        {navLinks.map(link => (
+          <li>
+            <a href={link.href} class="nav-link">{link.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="nav-actions">
+      <button
+        id="theme-toggle"
+        class="theme-btn"
+        aria-label="Cambiar tema"
+        title="Cambiar entre modo claro y oscuro"
+      >
+        <span class="theme-icon sun" aria-hidden="true">☀️</span>
+        <span class="theme-icon moon" aria-hidden="true">🌙</span>
+      </button>
+
+      <button
+        id="menu-toggle"
+        class="menu-btn"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="burger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true" role="dialog">
+    <ul role="list">
+      {navLinks.map(link => (
+        <li><a href={link.href} class="mobile-link">{link.label}</a></li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: transparent;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .navbar.scrolled {
+    background: var(--color-bg-card);
+    box-shadow: 0 1px 0 var(--color-border);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    gap: 1rem;
+  }
+
+  .nav-logo {
+    font-weight: 800;
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: var(--color-text);
+    white-space: nowrap;
+  }
+
+  .logo-bracket { color: var(--color-accent); }
+  .logo-name { color: var(--color-text); margin-inline: 2px; }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.4rem 0.75rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: color 0.2s ease, background 0.2s ease;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+    background: rgba(108, 99, 255, 0.1);
+  }
+
+  .nav-actions { display: flex; align-items: center; gap: 0.5rem; }
+
+  .theme-btn {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    width: 40px; height: 40px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: border-color 0.2s ease;
+  }
+
+  .theme-btn:hover { border-color: var(--color-accent); }
+
+  /* :global() is required because data-theme is on <html>, outside this component's scope */
+  :global([data-theme="dark"])  .theme-icon.sun  { display: block; }
+  :global([data-theme="dark"])  .theme-icon.moon { display: none;  }
+  :global([data-theme="light"]) .theme-icon.sun  { display: none;  }
+  :global([data-theme="light"]) .theme-icon.moon { display: block; }
+
+  .menu-btn {
+    display: none;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    width: 40px; height: 40px;
+    align-items: center; justify-content: center;
+    cursor: pointer;
+    flex-direction: column; gap: 4px;
+  }
+
+  .burger { display: flex; flex-direction: column; gap: 4px; }
+  .burger span {
+    display: block; width: 20px; height: 2px;
+    background: var(--color-text);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Open state */
+  .menu-btn.open .burger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .menu-btn.open .burger span:nth-child(2) { opacity: 0; }
+  .menu-btn.open .burger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border-top: 1px solid var(--color-border);
+    padding: 1rem 1.5rem;
+  }
+
+  .mobile-menu.open { display: flex; }
+  .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.25rem; }
+  .mobile-link {
+    display: block;
+    padding: 0.75rem 0.5rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+  }
+  .mobile-link:hover { color: var(--color-accent); padding-left: 1rem; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .menu-btn { display: flex; }
+  }
+</style>
+
+<script>
+  // Sticky scroll
+  const navbar = document.getElementById('navbar')!;
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // Theme toggle
+  const themeBtn = document.getElementById('theme-toggle')!;
+  themeBtn.addEventListener('click', () => {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-toggle')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+  menuBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    menuBtn.classList.toggle('open', isOpen);
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+  });
+
+  // Close mobile on link click
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      menuBtn.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Smooth scroll active link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => {
+          const href = l.getAttribute('href');
+          l.classList.toggle('active-link', href === `#${e.target.id}`);
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => observer.observe(s));
+</script>

@@ -1,0 +1,118 @@
+---
+import skillsData from '../data/skills.json';
+const { categories } = skillsData;
+---
+
+<section id="skills" class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Habilidades</span>
+      <h2 class="section-title">Stack <span class="gradient-text">Tecnológico</span></h2>
+      <p class="section-subtitle">Tecnologías con las que construyo soluciones de alto impacto</p>
+    </div>
+
+    <div class="skills-grid">
+      {categories.map(category => (
+        <div class="skill-category card">
+          <div class="category-header">
+            <span class="category-icon" aria-hidden="true">{category.icon}</span>
+            <h3 class="category-name">{category.name}</h3>
+          </div>
+
+          <ul class="skill-list" role="list">
+            {category.skills.map(skill => (
+              <li class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">{skill.name}</span>
+                  <span class="skill-pct">{skill.level}%</span>
+                </div>
+                <div class="skill-bar-track" role="progressbar" aria-valuenow={skill.level} aria-valuemin={0} aria-valuemax={100} aria-label={`${skill.name}: ${skill.level}%`}>
+                  <div class="skill-bar-fill" style={`width: 0%; --target: ${skill.level}%`}></div>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-accent);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .category-icon { font-size: 1.5rem; }
+
+  .category-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .skill-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  .skill-item { display: flex; flex-direction: column; gap: 0.35rem; }
+
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .skill-name {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .skill-pct {
+    font-size: 0.75rem;
+    color: var(--color-accent-2);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  // Animate skill bars on scroll
+  const bars = document.querySelectorAll<HTMLElement>('.skill-bar-fill');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target as HTMLElement;
+        const target = bar.style.getPropertyValue('--target');
+        bar.style.width = target;
+        observer.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  bars.forEach(bar => observer.observe(bar));
+</script>

@@ -1,0 +1,82 @@
+---
+import profile from '../data/profile.json';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <a href="#" class="footer-logo" aria-label="Kevin Ariza - Inicio">
+      <span class="logo-bracket">&lt;</span>
+      <span>KA</span>
+      <span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <p class="footer-copy">
+      © {year} {profile.name}. Construido con
+      <a href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
+      &amp; <span class="gradient-text">✨</span>
+    </p>
+
+    <div class="footer-links">
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+      <a href={`mailto:${profile.email}`} aria-label="Email">Email</a>
+      <a href="/curriculum.pdf" download aria-label="Descargar CV">CV</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--color-border);
+    padding-block: 2rem;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-weight: 800;
+    font-size: 1.1rem;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .logo-bracket { color: var(--color-accent); }
+
+  .footer-copy {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    text-align: center;
+  }
+
+  .footer-copy a {
+    color: var(--color-accent-2);
+    text-decoration: none;
+  }
+
+  .footer-copy a:hover { text-decoration: underline; }
+
+  .footer-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .footer-links a {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover { color: var(--color-accent); }
+
+  @media (max-width: 600px) {
+    .footer-inner { justify-content: center; text-align: center; }
+  }
+</style>
