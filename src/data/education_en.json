@@ -9,12 +9,30 @@
         "icon": "🎓"
     },
     {
+        "type": "education",
+        "institution": "Simón Bolívar University",
+        "title": "Minor in Software Engineering",
+        "subtitle": "Minor in Software Engineering",
+        "location": "Atlántico, Colombia",
+        "date": "Aug 2020",
+        "icon": "🎓"
+    },
+    {
+        "type": "course",
+        "institution": "Udemy",
+        "title": "SOLID Principles and Clean Code Course",
+        "subtitle": "Learning SOLID Principles and Clean Code",
+        "location": "Online",
+        "date": "Jan 2023",
+        "icon": "🚀"
+    },
+    {
         "type": "certification",
         "institution": "CISCO | Python Institute",
         "title": "Python Essentials 1 & 2",
         "subtitle": "Official programming essentials certification",
         "location": "Online",
-        "date": "Oct – Dec 2024",
+        "date": "Oct - Dec 2024",
         "icon": "🐍"
     },
     {

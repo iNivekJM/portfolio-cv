@@ -3,10 +3,28 @@
         "type": "education",
         "institution": "Universidad Simón Bolívar",
         "title": "Ingeniería de Sistemas",
+        "subtitle": "Titulo de Ingenierío de Sistemas",
+        "location": "Atlántico, Colombia",
+        "date": "Ago 2020",
+        "icon": "🎓"
+    },
+    {
+        "type": "education",
+        "institution": "Universidad Simón Bolívar",
+        "title": "Minor en Ingeniería de Software",
         "subtitle": "Minor en Ingeniería de Software",
         "location": "Atlántico, Colombia",
         "date": "Ago 2020",
         "icon": "🎓"
+    },
+    {
+        "type": "course",
+        "institution": "Udemy",
+        "title": "Curso Principios SOLID y Clean Code",
+        "subtitle": "Aprendizaje de Principios SOLID y Clean Code",
+        "location": "Online",
+        "date": "Ene 2023",
+        "icon": "🚀"
     },
     {
         "type": "certification",
@@ -14,7 +32,7 @@
         "title": "Python Essentials 1 y 2",
         "subtitle": "Certificación oficial de programming essentials",
         "location": "Online",
-        "date": "Oct – Dic 2024",
+        "date": "Oct - Dic 2024",
         "icon": "🐍"
     },
     {
