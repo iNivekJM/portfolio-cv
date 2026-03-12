@@ -3,7 +3,7 @@ import profileEs from "../data/profile.json";
 import profileEn from "../data/profile_en.json";
 import { getLangFromUrl } from "../i18n/utils";
 
-import logoIcon from "../assets/logo.svg?raw";
+import logoIcon from "/logo.svg?raw";
 
 const lang = getLangFromUrl(Astro.url);
 const profile = lang === "en" ? profileEn : profileEs;

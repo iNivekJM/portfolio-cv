@@ -13,18 +13,23 @@
             "Implementé soluciones escalables con AngularJS, Oracle SQL/PLSQL, PHP, Python, reduciendo tiempos de carga de procesos críticos en un 40%.",
             "Promoví la adopción de metodologías ágiles y control de versiones con GitHub, aumentando la eficiencia en la entrega de proyectos y adopción de mejores prácticas de código.",
             "Al asumir los roles de frontend y backend, logré acelerar el ciclo de desarrollo y la entrega de nuevos proyectos, cumpliendo con los cronogramas un 30% más rápido de lo habitual.",
-            "Construí la API que permite la recepción de +15,000 peticiones de archivos de facturas, el almacenamiento y procesamiento de estas utilizando Python, MongoDB, PL/SQL Oracle y Nginx."
+            "Construí la API que permite la recepción de +50,000 peticiones de archivos de facturas, el almacenamiento y procesamiento de estas utilizando Python, MongoDB, PL/SQL Oracle y Nginx."
         ],
         "technologies": [
             "AngularJS",
-            "Angular",
             "PHP",
-            "Python",
+            "HTML & CSS",
+            "Javascript",
+            "jQuery",
             "Oracle SQL",
             "PL/SQL",
+            "Bootstrap",
+            "Python",
             "MongoDB",
+            "GitHub",
             "Nginx",
-            "GitHub"
+            "Apache",
+            "Angular"
         ]
     }
 ]

@@ -44,11 +44,7 @@
                 },
                 {
                     "name": "REST API",
-                    "level": 90
-                },
-                {
-                    "name": "PL/SQL Oracle",
-                    "level": 88
+                    "level": 100
                 },
                 {
                     "name": "Node.js",
@@ -79,8 +75,16 @@
             "icon": "🛠️",
             "skills": [
                 {
+                    "name": "Deployment and administration of websites with IIS",
+                    "level": 90
+                },
+                {
                     "name": "Git & GitHub",
                     "level": 90
+                },
+                {
+                    "name": "Apache",
+                    "level": 100
                 },
                 {
                     "name": "Nginx",
