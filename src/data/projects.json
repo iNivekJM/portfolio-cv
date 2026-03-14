@@ -16,35 +16,17 @@
         "order": 1
     },
     {
-        "title": "Portal de Gestión Interna",
-        "description": "Plataforma web corporativa con más de 70 módulos que optimizan los procesos internos de una empresa con más de 700 empleados. Incluye módulos de RRHH, reportes ejecutivos, gestión de turnos y más.",
+        "title": "Página Web",
+        "description": "",
         "techs": [
-            "Angular",
-            "PHP",
-            "Oracle SQL",
-            "Bootstrap",
-            "REST API"
+            "Astro",
+            "TailwindCSS",
+            "Javascript"
         ],
         "repoUrl": "",
-        "liveUrl": "",
+        "liveUrl": "https://credi-go.com",
         "image": "",
         "featured": true,
         "order": 2
-    },
-    {
-        "title": "Sistema de Reportes Ejecutivos",
-        "description": "Dashboard ejecutivo con visualización de KPIs, métricas de negocio y reportes automatizados para la toma de decisiones gerenciales. Integración con Oracle y generación de reportes en PDF y Excel.",
-        "techs": [
-            "AngularJS",
-            "PL/SQL",
-            "Oracle SQL",
-            "Python",
-            "Chart.js"
-        ],
-        "repoUrl": "",
-        "liveUrl": "",
-        "image": "",
-        "featured": false,
-        "order": 3
     }
 ]
