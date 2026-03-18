@@ -1,7 +1,8 @@
 [
     {
-        "title": "API de Facturación Electrónica",
-        "description": "API de alto rendimiento que procesa más de 15,000 peticiones de archivos de facturas electrónicas. Maneja recepción, almacenamiento y procesamiento masivo de archivos con validaciones complejas y trazabilidad completa.",
+        "title": "API de Procesamiento Masivo de Facturas",
+        "description": "API de alto rendimiento que procesa más de 15,000 peticiones de archivos de facturas electrónicas. Cargue, comprensión, almacenamiento en FTP y procesamiento masivo de archivos con validaciones y trazabilidad completa.",
+        "role": "Backend Developer",
         "techs": [
             "Python",
             "MongoDB",
@@ -11,22 +12,42 @@
         ],
         "repoUrl": "",
         "liveUrl": "",
-        "image": "/projects/pj_1.jpg",
+        "image": "/projects/sc_1.jpg",
         "featured": true,
         "order": 1
     },
     {
-        "title": "Página Web",
-        "description": "",
+        "title": "Credigo Sitio Web",
+        "description": "Desarrollo de la interfaz principal para una Fintech de préstamos, centrada en la conversión de usuarios y claridad de información.",
+        "role": "Frontend Developer",
         "techs": [
             "Astro",
             "TailwindCSS",
+            "Diseño responsivo",
+            "Optimización de SEO",
             "Javascript"
         ],
         "repoUrl": "",
         "liveUrl": "https://credi-go.com",
-        "image": "",
+        "image": "/projects/sc_2.png",
         "featured": true,
         "order": 2
+    },
+    {
+        "title": "Credigo Dashboard",
+        "description": "Aplicación web para la gestión de prestamos de dinero online, con administración de Roles, Creditos, Pagos, intereses, etc.",
+        "role": "Frontend Developer",
+        "techs": [
+            "Angular 19",
+            "TailwindCSS",
+            "Typescript",
+            "Diseño responsivo",
+            "Optimización de SEO"
+        ],
+        "repoUrl": "",
+        "liveUrl": "https://app.credi-go.com",
+        "image": "/projects/sc_3.png",
+        "featured": true,
+        "order": 3
     }
 ]

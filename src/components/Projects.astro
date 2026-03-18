@@ -52,11 +52,11 @@ const content = {
             <Image 
               src={project.image} 
               alt={`Captura de pantalla del proyecto ${project.title}`}
-              width={300}
-              height={150}
+              width={1024}
               loading={i === 0 ? "eager" : "lazy"}
               decoding={i === 0 ? "sync" : "async"}
               fetchpriority={i === 0 ? "high" : "auto"}
+              class="rounded-lg"
             />
             <p class="project-desc">{project.description}</p>
 

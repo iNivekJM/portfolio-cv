@@ -1,7 +1,8 @@
 [
     {
-        "title": "Electronic Invoicing API",
-        "description": "High-performance API that processes more than 15,000 invoice document requests. Handles bulk file reception, storage, and processing with complex validations and full traceability.",
+        "title": "Massive Invoice Processing API",
+        "description": "High-performance API that processes over 15,000 electronic invoice file requests. Upload, compress, FTP store and bulk file processing with full validation and traceability.",
+        "role": "Backend Developer",
         "techs": [
             "Python",
             "MongoDB",
@@ -11,40 +12,42 @@
         ],
         "repoUrl": "",
         "liveUrl": "",
-        "image": "/projects/api-facturacion.png",
+        "image": "/projects/sc_1.jpg",
         "featured": true,
         "order": 1
     },
     {
-        "title": "Internal Management Portal",
-        "description": "Corporate web platform with +70 modules that optimize internal processes for a company with +700 employees. Includes HR modules, executive reports, shift management, and more.",
+        "title": "Credigo Website",
+        "description": "Development of the main interface for a Fintech lending company, focused on user conversion and clarity of information.",
+        "role": "Frontend Developer",
         "techs": [
-            "Angular",
-            "PHP",
-            "Oracle SQL",
-            "Bootstrap",
-            "REST API"
+            "Astro",
+            "TailwindCSS",
+            "Responsive Design",
+            "SEO Optimization",
+            "Javascript"
         ],
         "repoUrl": "",
-        "liveUrl": "",
-        "image": "/projects/portal-gestion.png",
+        "liveUrl": "https://credi-go.com",
+        "image": "/projects/sc_2.png",
         "featured": true,
         "order": 2
     },
     {
-        "title": "Executive Reporting System",
-        "description": "Executive dashboard with KPI visualization, business metrics, and automated reports for management decision-making. Oracle integration and PDF/Excel report generation.",
+        "title": "Credigo Dashboard",
+        "description": "Web application for managing online money loans. With role management, credit management, payment management, interest calculation, etc.",
+        "role": "Frontend Developer",
         "techs": [
-            "AngularJS",
-            "PL/SQL",
-            "Oracle SQL",
-            "Python",
-            "Chart.js"
+            "Angular 19",
+            "TailwindCSS",
+            "Typescript",
+            "Responsive Design",
+            "SEO Optimization"
         ],
         "repoUrl": "",
-        "liveUrl": "",
-        "image": "/projects/reportes.png",
-        "featured": false,
+        "liveUrl": "https://app.credi-go.com",
+        "image": "/projects/sc_3.png",
+        "featured": true,
         "order": 3
     }
 ]
