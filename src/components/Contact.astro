@@ -71,16 +71,18 @@ const t = useTranslations(lang);
       </div>
 
       <!-- Form -->
-      <form id="contact-form" class="contact-form card" novalidate data-netlify="true" name="contact" netlify>
+      <form id="contact-form" class="contact-form card" novalidate data-netlify="true" name="contact">
         <input type="hidden" name="form-name" value="contact" />
         <div class="form-group">
           <label for="cf-name">{t('contact.name')}</label>
-          <input type="text" id="cf-name" name="name" placeholder="Kevin Ariza" required autocomplete="name" />
+          <input type="text" id="cf-name" name="name" placeholder="Kevin Ariza" required autocomplete="name" aria-describedby="cf-name-error" />
+          <span id="cf-name-error" class="error-message" aria-live="polite"></span>
         </div>
 
         <div class="form-group">
           <label for="cf-email">{t('contact.email')}</label>
-          <input type="email" id="cf-email" name="email" placeholder="Kevin@gmail.com" required autocomplete="email" />
+          <input type="email" id="cf-email" name="email" placeholder="Kevin@gmail.com" required autocomplete="email" aria-describedby="cf-email-error" />
+          <span id="cf-email-error" class="error-message" aria-live="polite"></span>
         </div>
 
         <div class="form-group">
@@ -90,7 +92,8 @@ const t = useTranslations(lang);
 
         <div class="form-group">
           <label for="cf-message">{t('contact.message')}</label>
-          <textarea id="cf-message" name="message" rows="5" placeholder={t('contact.placeholder.message')} required></textarea>
+          <textarea id="cf-message" name="message" rows="5" placeholder={t('contact.placeholder.message')} required aria-describedby="cf-message-error"></textarea>
+          <span id="cf-message-error" class="error-message" aria-live="polite"></span>
         </div>
 
         <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
@@ -252,15 +255,56 @@ const t = useTranslations(lang);
 
   .form-status.success { color: var(--color-success); }
   .form-status.error { color: #f87171; }
+
+  .error-message {
+    font-size: 0.75rem;
+    color: #f87171;
+    min-height: 1rem;
+    margin-top: 0.25rem;
+  }
+
+  input[aria-invalid="true"],
+  textarea[aria-invalid="true"] {
+    border-color: #f87171;
+  }
 </style>
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
-  const status = document.getElementById('form-status')!;
+  const status = document.getElementById('form-status') as HTMLElement;
   const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+
+  const validateField = (input: HTMLInputElement | HTMLTextAreaElement) => {
+    const errorSpan = document.getElementById(`${input.id}-error`) as HTMLElement;
+    if (!input.validity.valid) {
+      input.setAttribute('aria-invalid', 'true');
+      errorSpan.textContent = input.validationMessage;
+      return false;
+    }
+    input.setAttribute('aria-invalid', 'false');
+    errorSpan.textContent = '';
+    return true;
+  };
+
+  form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input, textarea').forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => {
+      if (input.getAttribute('aria-invalid') === 'true') {
+        validateField(input);
+      }
+    });
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
+    let isValid = true;
+    form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>('input[required], textarea[required]').forEach(input => {
+      if (!validateField(input)) isValid = false;
+    });
+    
+    if (!isValid) return;
+
     btn.disabled = true;
     const originalContent = btn.innerHTML;
     const submitText = document.getElementById('submit-text')!;
@@ -272,13 +316,14 @@ const t = useTranslations(lang);
       const response = await fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams(formData as any).toString(),
+        body: new URLSearchParams(formData as unknown as Record<string, string>).toString(),
       });
 
       if (response.ok) {
         status.textContent = status.dataset.success || '✅ ¡Mensaje enviado!';
         status.className = 'form-status success';
         form.reset();
+        form.querySelectorAll<HTMLInputElement>('[aria-invalid]').forEach(el => el.setAttribute('aria-invalid', 'false'));
       } else {
         throw new Error();
       }

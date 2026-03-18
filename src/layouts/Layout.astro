@@ -27,7 +27,7 @@ const defaultContent = {
 const {
   title = defaultContent.title,
   description = defaultContent.description,
-  image = "/og-image.png",
+  image = "/logo.svg",
   url = Astro.url.href,
 } = Astro.props;
 ---
@@ -51,16 +51,20 @@ const {
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
+    <meta property="og:image" content={new URL(image, Astro.url)} />
     <meta property="og:url" content={url} />
     <meta property="og:type" content="website" />
-    <meta property="og:locale" content="es_CO" />
+    <meta property="og:locale" content={lang === 'en' ? 'en_US' : 'es_CO'} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0d00ff" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f5f5ff" media="(prefers-color-scheme: light)" />
 
     <!-- Canonical -->
     <link rel="canonical" href={url} />

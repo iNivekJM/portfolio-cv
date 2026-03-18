@@ -9,10 +9,10 @@ import Education from '../components/Education.astro';
 import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+import BackToTop from '../components/BackToTop.astro';
+import { getLangFromUrl } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
 <Layout>
@@ -27,50 +27,5 @@ const t = useTranslations(lang);
     <Contact />
   </main>
   <Footer />
+  <BackToTop lang={lang} />
 </Layout>
-
-<!-- Back to top button -->
-<button id="back-to-top" class="back-to-top" aria-label={t('back.to.top')}>
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-
-<style>
-  .back-to-top {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 44px; height: 44px;
-    border-radius: 50%;
-    background: var(--color-accent);
-    color: #fff;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 20px var(--color-accent-glow);
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    pointer-events: none;
-    z-index: 900;
-  }
-
-  .back-to-top.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .back-to-top:hover {
-    transform: translateY(-3px);
-  }
-</style>
-
-<script>
-  const btn = document.getElementById('back-to-top')!;
-  window.addEventListener('scroll', () => {
-    btn.classList.toggle('visible', window.scrollY > 400);
-  }, { passive: true });
-  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-</script>

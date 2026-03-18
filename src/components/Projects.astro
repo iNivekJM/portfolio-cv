@@ -49,16 +49,15 @@ const content = {
             )}
 
             <h3 class="project-title">{project.title}</h3>
-            {/*  */}
             <Image 
               src={project.image} 
-              alt="Descripción del banner"
+              alt={`Captura de pantalla del proyecto ${project.title}`}
               width={300}
               height={150}
-              loading="eager"
-              fetchpriority="high"
+              loading={i === 0 ? "eager" : "lazy"}
+              decoding={i === 0 ? "sync" : "async"}
+              fetchpriority={i === 0 ? "high" : "auto"}
             />
-            {/*  */}
             <p class="project-desc">{project.description}</p>
 
             <div class="project-techs">
