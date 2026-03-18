@@ -29,3 +29,4 @@ pnpm-debug.log*
 # Local Agents folder
 .agent
 .agents
+skills-lock
