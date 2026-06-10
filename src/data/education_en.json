@@ -61,5 +61,23 @@
         "location": "Online",
         "date": "Jan 2026",
         "icon": "🚀"
+    },
+    {
+        "type": "certification",
+        "institution": "IBM",
+        "title": "AI Literacy",
+        "subtitle": "Introduction to Artificial Intelligence",
+        "location": "Online",
+        "date": "Mar 2026",
+        "icon": "🧠"
+    },
+    {
+        "type": "certification",
+        "institution": "AWS",
+        "title": "AWS Cloud Practitioner Essentials",
+        "subtitle": "AWS Cloud Practitioner Essentials",
+        "location": "Online",
+        "date": "May 2026",
+        "icon": "🤖"
     }
 ]

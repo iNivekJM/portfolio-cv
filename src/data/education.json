@@ -61,5 +61,23 @@
         "location": "Online",
         "date": "Ene 2026",
         "icon": "🚀"
+    },
+    {
+        "type": "certification",
+        "institution": "IBM",
+        "title": "Alfabetización en IA",
+        "subtitle": "Introducción a la inteligencia artificial",
+        "location": "Online",
+        "date": "Mar 2026",
+        "icon": "🧠"
+    },
+    {
+        "type": "certification",
+        "institution": "AWS",
+        "title": "AWS Cloud Practitioner Essentials",
+        "subtitle": "AWS Cloud Practitioner Essentials",
+        "location": "Online",
+        "date": "May 2026",
+        "icon": "🤖"
     }
 ]
